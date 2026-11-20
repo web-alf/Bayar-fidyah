@@ -1,0 +1,203 @@
+---
+const cards = [
+	{
+		title: 'Fidyah dengan Uang',
+		paragraphs: [
+			"Jumhur ulama mewajibkan untuk dikeluarkan makanan berdasarkan Al-Qur'an, namun madzhab Hanafiyah membolehkan membayarkan nilainya. Lebih baik mengambil pendapat jumhur ulama, kecuali jika mengeluarkan fidyah sejumlah nilainya lebih mendatangkan maslahat maka diperbolehkan.",
+			'Sehingga dapat diambil kesimpulan bahwa kewajiban fidyah boleh dilaksanakan dengan mengganti uang, jika lebih bermanfaat. Namun jika uang tersebut akan digunakan untuk foya-foya, maka wajib memberikannya dalam bentuk bahan makanan pokok.',
+		],
+	},
+	{
+		title: 'Cara membayar Fidyah',
+		paragraphs: [
+			'Adapun ketentuan memberikan seluruh fidyah kepada 1 miskin saja, sebagian ulama melarangnya, namun Imam Nawawi rahimahullah dalam kitab Al-Majmu\' membolehkannya. Begitu juga Al Mawardi yang mengatakan, "Boleh saja mengeluarkan fidyah pada satu orang miskin sekaligus. Hal ini tidak ada perselisihan di antara para ulama."',
+			'Jika anda merasa kesulitan untuk membayar fidyah anda maka anda bisa mebayarkan fidyah online melalui lembaga resmi kami Lembaga Zakat Alfatihah Yayasan Rumah Tahfidz Alfatihah dengan mengeklik tombol dibawah ini.',
+		],
+		cta: true,
+	},
+];
+
+const distribusi = {
+	title: 'Distribusi Beras Fakir Miskin',
+	paragraphs: [
+		'Adapun ketentuan memberikan seluruh fidyah kepada 1 miskin saja, sebagian ulama melarangnya, namun Imam Nawawi rahimahullah dalam kitab Al-Majmu\' membolehkannya. Begitu juga Al Mawardi yang mengatakan, "Boleh saja mengeluarkan fidyah pada satu orang miskin sekaligus. Hal ini tidak ada perselisihan di antara para ulama."',
+		'Jika anda merasa kesulitan untuk membayar fidyah anda maka anda bisa mebayarkan fidyah online melalui lembaga resmi kami Lembaga Zakat Alfatihah Yayasan Rumah Tahfidz Alfatihah dengan mengeklik tombol dibawah ini.',
+	],
+	image: '/images/distribusiberas.webp',
+	imageAlt: 'Dokumentasi penyaluran fidyah Yayasan Al-Fatihah kepada penerima manfaat',
+};
+
+const penerimaManfaat = [
+	{ image: '/images/bayar%20fidya%201.jpg', alt: 'Anak yatim dan dhuafa penerima manfaat fidyah', label: 'Anak Yatim & Dhuafa' },
+	{ image: '/images/bayar%20fidya%202.jpg', alt: 'Fakir dan miskin penerima manfaat fidyah', label: 'Fakir & Miskin' },
+	{ image: '/images/bayar%20fidya%203.webp', alt: 'Lansia dhuafa penerima manfaat fidyah', label: 'Lansia Dhuafa' },
+	{ image: '/images/bayar%20fidya%204.webp', alt: 'Ibu hamil dan menyusui penerima manfaat fidyah', label: 'Ibu Hamil & Menyusui' },
+	{ image: '/images/bayar%20fidya%205.webp', alt: 'Orang sakit tanpa harapan sembuh penerima manfaat fidyah', label: 'Pejuang Sakit' },
+	{ image: '/images/bayar%20fidya%206.webp', alt: 'Panti asuhan dan pondok penerima manfaat fidyah', label: 'Panti Asuhan & Pondok' },
+	{ image: '/images/bayar%20fidya%207.webp', alt: 'Pengungsi dan korban bencana penerima manfaat fidyah', label: 'Pengungsi & Korban Bencana' },
+	{ image: '/images/bayar%20fidya%208.webp', alt: 'Distribusi fidyah tepat sasaran', label: 'Distribusi Tepat Sasaran' },
+	{ image: '/images/bayar%20fidya%209.webp', alt: 'Penyaluran fidyah kepada dhuafa', label: 'Penyaluran Fidyah Dhuafa' },
+];
+---
+
+<section class="bg-emerald-50/40 py-14 sm:py-20">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div data-reveal class="mx-auto mb-10 max-w-2xl text-center">
+			<h2 class="text-2xl font-extrabold text-emerald-950 sm:text-3xl">Untuk Siapa Fidyah Diberikan?</h2>
+			<p class="mt-3 text-sm text-slate-600">
+				"Dan bagi orang-orang yang berat menjalankannya, wajib membayar fidyah, (yaitu) memberi makan
+				seorang miskin, maka barangsiapa yang dengan kerelaan hati mengerjakan kebajikan, maka itulah
+				yang lebih baik baginya." (QS. Al-Baqarah: 184)
+			</p>
+		</div>
+
+		<!-- Slider 8 foto penerima manfaat -->
+		<div class="relative mb-12">
+			<div
+				id="penerima-slider"
+				class="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+			>
+				{penerimaManfaat.map((item) => (
+					<div class="relative w-[85%] shrink-0 snap-start overflow-hidden rounded-2xl shadow-md transition duration-300 hover:shadow-xl sm:w-[47%] lg:w-[calc((100%-2.5rem)/3)]">
+						<div class="aspect-[3/4] w-full overflow-hidden bg-emerald-100">
+							<img
+								src={item.image}
+								alt={item.alt}
+								class="h-full w-full object-cover object-top transition duration-500 ease-out hover:scale-110"
+								loading="lazy"
+							/>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<!-- Navigasi slider: overlay di atas gambar -->
+			<button
+				type="button"
+				aria-label="Sebelumnya"
+				data-slider-prev
+				class="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-white/90 text-emerald-700 shadow-md backdrop-blur transition hover:bg-white sm:left-3"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+					<path fill-rule="evenodd" d="M12.78 15.78a.75.75 0 01-1.06 0l-5-5a.75.75 0 010-1.06l5-5a.75.75 0 111.06 1.06L8.31 10l4.47 4.47a.75.75 0 010 1.06z" clip-rule="evenodd" />
+				</svg>
+			</button>
+			<button
+				type="button"
+				aria-label="Selanjutnya"
+				data-slider-next
+				class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-white/90 text-emerald-700 shadow-md backdrop-blur transition hover:bg-white sm:right-3"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+					<path fill-rule="evenodd" d="M7.22 4.22a.75.75 0 011.06 0l5 5a.75.75 0 010 1.06l-5 5a.75.75 0 01-1.06-1.06L11.69 10 7.22 5.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+				</svg>
+			</button>
+		</div>
+
+		<!-- Fidyah dengan Uang & Cara membayar Fidyah -->
+		<div class="grid gap-6 lg:grid-cols-2">
+			{cards.map((card, index) => (
+				<div data-reveal={index === 0 ? 'left' : 'right'} class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-8">
+					<h3 class="text-lg font-bold text-emerald-950">{card.title}</h3>
+					{card.paragraphs.map((p) => (
+						<p class="mt-5 text-sm leading-relaxed text-slate-700">{p}</p>
+					))}
+					{card.cta && (
+						<a
+							href="https://wa.me/628112704113"
+							class="mt-5 inline-flex items-center justify-center rounded-full bg-emerald-700 px-6 py-2.5 text-sm font-semibold text-white shadow transition hover:bg-emerald-800"
+						>
+							Bayar Fidyah Sekarang
+						</a>
+					)}
+				</div>
+			))}
+		</div>
+
+		<!-- Distribusi Beras Fakir Miskin + dokumentasi -->
+		<div class="mt-10 grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+			<!-- Foto dokumentasi -->
+			<div data-reveal="left" class="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-2xl shadow-lg transition duration-300 hover:shadow-2xl lg:mx-0">
+				<img
+					src={distribusi.image}
+					alt={distribusi.imageAlt}
+					class="absolute inset-0 h-full w-full object-cover transition duration-500 hover:scale-105"
+					loading="lazy"
+				/>
+			</div>
+
+			<div data-reveal="right">
+				<h3 class="text-2xl font-extrabold leading-tight text-emerald-950 sm:text-3xl">{distribusi.title}</h3>
+				{distribusi.paragraphs.map((p) => (
+					<p class="mt-5 text-sm leading-relaxed text-slate-700">{p}</p>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const slider = document.getElementById('penerima-slider');
+	const prevBtn = document.querySelector('[data-slider-prev]');
+	const nextBtn = document.querySelector('[data-slider-next]');
+
+	function scrollByCard(direction: number) {
+		if (!slider) return;
+		const card = slider.querySelector('div');
+		const gap = 16; // gap-4
+		const cardWidth = card ? card.getBoundingClientRect().width + gap : 260;
+		const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+		// Jika sudah di ujung kanan dan lanjut ke kanan, kembali ke awal
+		if (direction > 0 && slider.scrollLeft >= maxScroll - 5) {
+			slider.scrollTo({ left: 0, behavior: 'smooth' });
+			return;
+		}
+		// Jika sudah di awal dan mundur ke kiri, lompat ke ujung kanan
+		if (direction < 0 && slider.scrollLeft <= 5) {
+			slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+			return;
+		}
+
+		slider.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+	}
+
+	const AUTO_SLIDE_DELAY = 2000; // 2 detik
+	let autoSlideTimer: ReturnType<typeof setInterval> | null = null;
+
+	function startAutoSlide() {
+		stopAutoSlide();
+		autoSlideTimer = setInterval(() => scrollByCard(1), AUTO_SLIDE_DELAY);
+	}
+
+	function stopAutoSlide() {
+		if (autoSlideTimer) {
+			clearInterval(autoSlideTimer);
+			autoSlideTimer = null;
+		}
+	}
+
+	function restartAutoSlide() {
+		stopAutoSlide();
+		startAutoSlide();
+	}
+
+	prevBtn?.addEventListener('click', () => {
+		scrollByCard(-1);
+		restartAutoSlide();
+	});
+	nextBtn?.addEventListener('click', () => {
+		scrollByCard(1);
+		restartAutoSlide();
+	});
+
+	// Jeda otomatis saat pengguna berinteraksi, lanjut lagi setelah selesai
+	slider?.addEventListener('mouseenter', stopAutoSlide);
+	slider?.addEventListener('mouseleave', startAutoSlide);
+	slider?.addEventListener('touchstart', stopAutoSlide, { passive: true });
+	slider?.addEventListener('touchend', startAutoSlide, { passive: true });
+
+	startAutoSlide();
+</script>
+
+

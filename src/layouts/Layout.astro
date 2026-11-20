@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Bayar Fidyah.com — Tunaikan Fidyah Puasa, Tuntaskan Hutang dengan Berkah',
+	description = 'Tunaikan kewajiban fidyah puasa Anda dengan mudah, aman, dan transparan bersama Yayasan Al-Fatihah. Disalurkan tepat sasaran kepada yang berhak.',
+} = Astro.props;
+---
+
+<html lang="id" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="font-sans text-slate-700 antialiased bg-white">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	html {
+		font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+	}
+</style>
+
+<script>
+	// Scroll-reveal profesional: elemen dengan [data-reveal] akan muncul
+	// halus (fade + geser) ketika masuk viewport. Berjalan di semua halaman.
+	function initScrollReveal() {
+		const targets = document.querySelectorAll<HTMLElement>('[data-reveal]');
+		if (!targets.length) return;
+
+		if (!('IntersectionObserver' in window)) {
+			targets.forEach((el) => el.classList.add('is-visible'));
+			return;
+		}
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+		);
+
+		targets.forEach((el) => observer.observe(el));
+	}
+
+	initScrollReveal();
+	document.addEventListener('astro:page-load', initScrollReveal);
+</script>

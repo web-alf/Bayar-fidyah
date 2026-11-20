@@ -1,0 +1,117 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+// Catatan: halaman dirender statis (output: static), sehingga query string
+// (?author=...) tidak bisa dibaca di sini saat build. Highlight "Blog" untuk
+// halaman terfilter ditangani lewat skrip di bawah pada sisi klien.
+const navLinks = [
+	{ label: 'Beranda', href: '/#beranda', isActive: currentPath === '/' || currentPath === '' },
+	{ label: 'Tentang Kami', href: '/tentang-kami', isActive: currentPath.startsWith('/tentang-kami') },
+	{ label: 'Galeri', href: '/galeri', isActive: currentPath.startsWith('/galeri') },
+	{ label: 'Blog', href: '/blog', isActive: currentPath === '/blog', id: 'nav-blog-link' },
+];
+
+const bayarFidyahHref = 'https://wa.me/628112704113';
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-100 bg-white shadow-sm transition-shadow duration-300" id="site-header">
+	<nav class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+		<a href="/#beranda" class="flex items-center shrink-0">
+			<img src="/images/logo.png" alt="BayarFidyah.com" class="h-8 sm:h-9 w-auto" />
+		</a>
+
+		<ul class="hidden md:flex items-center gap-8 text-sm font-bold">
+			{navLinks.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						data-nav-blog={link.id === 'nav-blog-link' ? 'true' : undefined}
+						class={`link-underline transition-colors duration-200 hover:text-amber-500 ${link.isActive ? 'is-active text-amber-500' : 'text-emerald-700'}`}
+					>
+						{link.label}
+					</a>
+				</li>
+			))}
+		</ul>
+
+		<div class="hidden md:flex items-center">
+			<a
+				href={bayarFidyahHref}
+				class="group inline-flex items-center gap-2 rounded-full bg-amber-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-500/30 transition duration-300 hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/40"
+			>
+				Bayar Fidyah
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+				</svg>
+			</a>
+		</div>
+
+		<button
+			id="menu-toggle"
+			type="button"
+			aria-label="Buka menu"
+			class="md:hidden flex h-9 w-9 items-center justify-center rounded-lg text-emerald-800"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-6 w-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+			</svg>
+		</button>
+	</nav>
+
+	<div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pb-4">
+		<ul class="flex flex-col gap-3 pt-3 text-sm font-bold">
+			{navLinks.map((link) => (
+				<li>
+					<a
+						href={link.href}
+						data-nav-blog={link.id === 'nav-blog-link' ? 'true' : undefined}
+						class={`block py-1 hover:text-amber-500 ${link.isActive ? 'text-amber-500' : 'text-emerald-700'}`}
+					>
+						{link.label}
+					</a>
+				</li>
+			))}
+		</ul>
+		<a
+			href={bayarFidyahHref}
+			class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-500/30 transition hover:bg-amber-400"
+		>
+			Bayar Fidyah
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="h-4 w-4">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+			</svg>
+		</a>
+	</div>
+</header>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const menu = document.getElementById('mobile-menu');
+	toggle?.addEventListener('click', () => {
+		menu?.classList.toggle('hidden');
+	});
+
+	// Efek bayangan lebih tegas pada header saat halaman di-scroll
+	const header = document.getElementById('site-header');
+	function updateHeaderShadow() {
+		if (!header) return;
+		if (window.scrollY > 8) {
+			header.classList.add('shadow-md');
+			header.classList.remove('shadow-sm');
+		} else {
+			header.classList.add('shadow-sm');
+			header.classList.remove('shadow-md');
+		}
+	}
+	updateHeaderShadow();
+	window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+
+	// Halaman statis: matikan highlight "Blog" bila sedang menampilkan
+	// daftar blog yang difilter per penulis (/blog?author=...).
+	const params = new URLSearchParams(window.location.search);
+	if (params.has('author')) {
+		document.querySelectorAll<HTMLAnchorElement>('a[data-nav-blog="true"]').forEach((link) => {
+			link.classList.remove('text-amber-500');
+			link.classList.add('text-emerald-700');
+		});
+	}
+</script>

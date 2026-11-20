@@ -1,0 +1,234 @@
+---
+interface Props {
+	showJaminanLayanan?: boolean;
+}
+
+const { showJaminanLayanan = true } = Astro.props;
+
+const supportedBy = [
+	{ src: '/images/logo%20bf%201.png', alt: 'Alfatihah.com' },
+	{ src: '/images/logo%20bf%202.jpg', alt: 'Masjid Alfatihah' },
+	{ src: '/images/logo%20bf%203.png', alt: 'Rumah Tahfidz Al-Fatihah' },
+	{ src: '/images/logo%20bf%204.png', alt: 'Alfatihah Studio' },
+	{ src: '/images/logo%20bf%205.png', alt: 'Pesantren Alfatihah' },
+	{ src: '/images/logo%20bf%206.png', alt: 'Alfatihah Day Care' },
+	{ src: '/images/lofo%20bf%207.png', alt: 'Alfatihah Boarding School' },
+	{ src: '/images/logo%20bf%208.png', alt: 'Doa Tanpa Suara - Doa Santri Tunarungu' },
+	{ src: '/images/logo%20bf%209.png', alt: 'Ambulance Al-Fatihah' },
+	{ src: '/images/logo%20bf%2010.png', alt: 'Nasi Santri' },
+	{ src: '/images/logo%20bf%2011.png', alt: 'Pasukan Al-Fatihah' },
+];
+
+const legalitas = [
+	'Keputusan Menteri Hukum Dan Hak Asasi Manusia Republik Indonesia Nomor Administrasi Hukum Umum - 0009981.AH.01.07 Tahun 2017',
+	'Nomor Pokok Wajib Pajak: 82.204.833.6-503.000',
+	'Izin Badan Wakaf Indonesia: 3.3.00444',
+	'Izin Pengumpulan Uang atau Barang: B/4745/460/VII/2024',
+];
+
+---
+
+<!-- Jaminan Layanan -->
+{showJaminanLayanan && (
+	<div class="bg-emerald-50/40 py-5 sm:py-6">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-7">
+				<div data-reveal style="--reveal-delay:0ms" class="flex items-center gap-2 transition duration-300 hover:-translate-y-0.5">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 shrink-0 text-slate-900">
+						<path d="M12 2.5 4.5 5.5v6c0 5 3.3 8.3 7.5 10 4.2-1.7 7.5-5 7.5-10v-6L12 2.5Z" />
+					</svg>
+					<span class="text-left text-sm font-bold leading-tight text-slate-900">Donasi<br />Aman</span>
+				</div>
+				<div data-reveal style="--reveal-delay:100ms" class="flex items-center gap-2 transition duration-300 hover:-translate-y-0.5">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 shrink-0 text-slate-900">
+						<path d="M12 7.5a3 3 0 1 0-5.3 1.9c.4.5 1 1 1.8 1.6L12 14l3.5-3c.8-.6 1.4-1.1 1.8-1.6A3 3 0 1 0 12 7.5Z" />
+						<circle cx="9" cy="5" r="2" />
+					</svg>
+					<span class="text-left text-sm font-bold leading-tight text-slate-900">Pelayanan<br />Terbaik</span>
+				</div>
+				<div data-reveal style="--reveal-delay:200ms" class="flex items-center gap-2 transition duration-300 hover:-translate-y-0.5">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 shrink-0 text-slate-900">
+						<path d="M12 2.5a4 4 0 0 0-4 4v2.25H7A1.5 1.5 0 0 0 5.5 10.25v8.25A1.5 1.5 0 0 0 7 20h10a1.5 1.5 0 0 0 1.5-1.5v-8.25A1.5 1.5 0 0 0 17 8.75h-2.5V6.5a2.5 2.5 0 0 0-5 0 .75.75 0 0 1-1.5 0 4 4 0 0 1 4-4Z" />
+						<circle cx="12" cy="14" r="1.6" fill="white" />
+					</svg>
+					<span class="text-left text-sm font-bold leading-tight text-slate-900">Privasi<br />Dilindungi</span>
+				</div>
+			</div>
+		</div>
+	</div>
+)}
+
+<footer id="faq" class="bg-emerald-950 text-emerald-100">
+	<!-- Di Support Oleh -->
+	<div class="relative border-b border-emerald-900 bg-emerald-800/40 py-8">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<p class="mb-5 text-center text-lg font-extrabold text-amber-500 sm:text-xl">Di Support Oleh:</p>
+
+			<div class="relative flex items-center">
+				<button
+					type="button"
+					aria-label="Sebelumnya"
+					data-support-prev
+					class="absolute -left-2 z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:-left-4"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+						<path fill-rule="evenodd" d="M12.78 15.78a.75.75 0 01-1.06 0l-5-5a.75.75 0 010-1.06l5-5a.75.75 0 111.06 1.06L8.31 10l4.47 4.47a.75.75 0 010 1.06z" clip-rule="evenodd" />
+					</svg>
+				</button>
+
+				<div
+					id="support-slider"
+					class="mx-auto flex max-w-5xl snap-x snap-mandatory items-center gap-8 overflow-x-auto scroll-smooth px-8 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-12 [&::-webkit-scrollbar]:hidden"
+				>
+					{supportedBy.map((logo) => (
+						<div class="flex shrink-0 snap-center items-center justify-center">
+							<img
+								src={logo.src}
+								alt={logo.alt}
+								class="h-10 w-auto max-w-[130px] object-contain sm:h-12 sm:max-w-[150px]"
+								loading="lazy"
+							/>
+						</div>
+					))}
+				</div>
+
+				<button
+					type="button"
+					aria-label="Selanjutnya"
+					data-support-next
+					class="absolute -right-2 z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:-right-4"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+						<path fill-rule="evenodd" d="M7.22 4.22a.75.75 0 011.06 0l5 5a.75.75 0 010 1.06l-5 5a.75.75 0 01-1.06-1.06L11.69 10 7.22 5.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+		<div class="grid gap-10 lg:grid-cols-3">
+			<!-- Brand & Kontak -->
+			<div>
+				<a href="/#beranda" class="flex items-center">
+					<img src="/images/logo.png" alt="BayarFidyah.com" class="h-9 w-auto" />
+				</a>
+				<div class="mt-5 space-y-3 text-sm text-emerald-200/80">
+					<p class="flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 shrink-0 text-amber-500">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M3 5.5h3l2 5-1.5 1.5a11 11 0 0 0 5.5 5.5L13.5 16l5 2v3a1 1 0 0 1-1 1C9.5 22 2 14.5 2 6.5a1 1 0 0 1 1-1Z" />
+						</svg>
+						085138889995
+					</p>
+					<p class="flex items-start gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4 shrink-0 mt-0.5 text-amber-500">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z" />
+							<circle cx="12" cy="10" r="2.5" />
+						</svg>
+						Jalan Ngablak Indah II No. 24A Genuk Kota Semarang 50111
+					</p>
+				</div>
+			</div>
+
+			<!-- Legalitas -->
+			<div>
+				<h4 class="text-base font-extrabold text-amber-500 sm:text-lg">
+					Legalitas
+				</h4>
+				<div class="mt-2 h-px w-28 bg-emerald-800"></div>
+				<ul class="mt-4 space-y-3 text-sm leading-relaxed text-emerald-200/80">
+					{legalitas.map((item) => (
+						<li class="flex items-start gap-2">
+							<span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-amber-500"></span>
+							<span>{item}</span>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<!-- Partner Pembayaran -->
+			<div>
+				<h4 class="text-base font-extrabold text-amber-500 sm:text-lg">
+					Partner
+				</h4>
+				<div class="mt-2 h-px w-28 bg-emerald-800"></div>
+
+				<div class="mt-4 rounded-xl bg-emerald-100 p-3">
+					<img
+						src="/images/payment.png"
+						alt="Partner pembayaran: BCA, Mandiri, BANK BRI, BNI, BNI Syariah, BRI Syariah, Bank Muamalat, Mandiri Syariah, GoPay, OVO, Link Aja, DANA, ShopeePay"
+						class="w-full mix-blend-multiply"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="border-t border-emerald-900 bg-emerald-900/40 py-4 text-center text-xs text-emerald-300/80">
+		©copyright 2020. Fidyah.com
+	</div>
+</footer>
+
+<script>
+	const slider = document.getElementById('support-slider');
+	const prevBtn = document.querySelector('[data-support-prev]');
+	const nextBtn = document.querySelector('[data-support-next]');
+
+	function scrollSupportBy(direction: number) {
+		if (!slider) return;
+		const item = slider.querySelector('div');
+		const gap = 48; // approx sm:gap-12
+		const width = item ? item.getBoundingClientRect().width + gap : 140;
+		const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+		// Loop ke awal jika sudah di ujung kanan
+		if (direction > 0 && slider.scrollLeft >= maxScroll - 5) {
+			slider.scrollTo({ left: 0, behavior: 'smooth' });
+			return;
+		}
+		// Loop ke akhir jika sudah di awal dan mundur
+		if (direction < 0 && slider.scrollLeft <= 5) {
+			slider.scrollTo({ left: maxScroll, behavior: 'smooth' });
+			return;
+		}
+
+		slider.scrollBy({ left: direction * width, behavior: 'smooth' });
+	}
+
+	const AUTO_SLIDE_DELAY = 2000; // 2 detik
+	let autoSlideTimer: ReturnType<typeof setInterval> | null = null;
+
+	function startAutoSlide() {
+		stopAutoSlide();
+		autoSlideTimer = setInterval(() => scrollSupportBy(1), AUTO_SLIDE_DELAY);
+	}
+
+	function stopAutoSlide() {
+		if (autoSlideTimer) {
+			clearInterval(autoSlideTimer);
+			autoSlideTimer = null;
+		}
+	}
+
+	function restartAutoSlide() {
+		stopAutoSlide();
+		startAutoSlide();
+	}
+
+	prevBtn?.addEventListener('click', () => {
+		scrollSupportBy(-1);
+		restartAutoSlide();
+	});
+	nextBtn?.addEventListener('click', () => {
+		scrollSupportBy(1);
+		restartAutoSlide();
+	});
+
+	slider?.addEventListener('mouseenter', stopAutoSlide);
+	slider?.addEventListener('mouseleave', startAutoSlide);
+	slider?.addEventListener('touchstart', stopAutoSlide, { passive: true });
+	slider?.addEventListener('touchend', startAutoSlide, { passive: true });
+
+	startAutoSlide();
+</script>

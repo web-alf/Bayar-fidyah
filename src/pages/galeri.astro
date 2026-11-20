@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import CtaBayar from '../components/CtaBayar.astro';
+import Footer from '../components/Footer.astro';
+
+const galeri = [
+	{ image: '/images/dokumentasi%201.png', alt: 'Penyaluran beras fidyah kepada anak-anak penerima manfaat', label: 'Penyaluran Beras untuk Anak Yatim', width: 375, height: 188 },
+	{ image: '/images/dokumentasi%202.png', alt: 'Penyaluran beras fidyah kepada warga dhuafa di sekolah', label: 'Penyaluran Beras untuk Dhuafa', width: 316, height: 194 },
+	{ image: '/images/dokumetasi%204.png', alt: 'Santri penerima program yayasan berbaris di aula', label: 'Santri Penerima Program', width: 382, height: 195 },
+	{ image: '/images/dokumentasi%203.png', alt: 'Santri penerima program yayasan berjalan membawa Al-Quran', label: 'Penyerahan Program Santri', width: 379, height: 194 },
+	{ image: '/images/dokumentasi%205.png', alt: 'Anak-anak yatim mengaji bersama ustadz', label: 'Kegiatan Mengaji Anak Yatim', width: 383, height: 193 },
+	{ image: '/images/dokumentasi%206.png', alt: 'Peserta akhwat mengikuti program pembinaan yayasan', label: 'Program Pembinaan Akhwat', width: 384, height: 188 },
+	{ image: '/images/dokumentasi%207.png', alt: 'Proses penyembelihan hewan kurban oleh tim yayasan', label: 'Penyembelihan Hewan Kurban', width: 377, height: 183 },
+	{ image: '/images/dokumentasi%208.png', alt: 'Penyaluran Al-Quran kepada penerima manfaat', label: "Penyaluran Al-Qur'an", width: 372, height: 191 },
+	{ image: '/images/dokumentasi%209.png', alt: 'Armada ambulans Al-Fatihah siaga melayani masyarakat', label: 'Armada Ambulans Al-Fatihah', width: 378, height: 185 },
+	{ image: '/images/dokumentasi%2010.png', alt: 'Ambulans Al-Fatihah siaga di lingkungan warga', label: 'Layanan Ambulans Siaga', width: 384, height: 188 },
+	{ image: '/images/dokumentasi%2011.png', alt: 'Program beasiswa karantina Quran akhwat', label: "Beasiswa Karantina Qur'an Akhwat", width: 384, height: 189 },
+	{ image: '/images/dokumentasi%2012.png', alt: 'Anak-anak mengikuti program cita-cita hafidz Quran 30 juz', label: "Cita-cita Hafidz Qur'an 30 Juz", width: 376, height: 191 },
+];
+---
+
+<Layout title="Galeri — BayarFidyah.com" description="Dokumentasi penyaluran fidyah Yayasan Al-Fatihah kepada penerima manfaat.">
+	<Navbar />
+
+	<section class="bg-emerald-950 py-14 text-center text-white sm:py-20">
+		<div data-reveal class="mx-auto max-w-3xl px-4">
+			<h1 class="text-3xl font-extrabold sm:text-4xl">Galeri Dokumentasi</h1>
+			<p class="mt-3 text-sm text-emerald-100 sm:text-base">
+				Dokumentasi penyaluran fidyah kepada para penerima manfaat yang berhak, disalurkan secara amanah
+				dan tepat sasaran oleh Yayasan Al-Fatihah.
+			</p>
+		</div>
+	</section>
+
+	<section class="bg-white py-14 sm:py-20">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div id="galeri-gallery" class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+				{galeri.map((item) => (
+					<a
+						href={item.image}
+						data-pswp-width={item.width}
+						data-pswp-height={item.height}
+						data-caption={item.label}
+						class="group relative block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl shadow-sm ring-1 ring-slate-100"
+					>
+						<img
+							src={item.image}
+							alt={item.alt}
+							class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+							loading="lazy"
+						/>
+						<span class="pointer-events-none absolute inset-0 flex items-center justify-center bg-emerald-950/0 transition group-hover:bg-emerald-950/20">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-8 w-8 text-white opacity-0 transition group-hover:opacity-100">
+								<circle cx="11" cy="11" r="7"></circle>
+								<path d="m21 21-4.35-4.35"></path>
+								<path d="M11 8v6M8 11h6"></path>
+							</svg>
+						</span>
+						<span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 text-xs font-semibold text-white sm:text-sm">
+							{item.label}
+						</span>
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<CtaBayar />
+	<Footer showJaminanLayanan={false} />
+</Layout>
+
+<script>
+	import PhotoSwipeLightbox from 'photoswipe/lightbox';
+	import 'photoswipe/style.css';
+
+	const lightbox = new PhotoSwipeLightbox({
+		gallery: '#galeri-gallery',
+		children: 'a',
+		pswpModule: () => import('photoswipe'),
+		padding: { top: 20, bottom: 40, left: 20, right: 20 },
+		bgOpacity: 0.9,
+	});
+
+	// Ikon expand (masuk fullscreen) & collapse (keluar fullscreen)
+	const ICON_EXPAND =
+		'<path d="M4 9V5a1 1 0 0 1 1-1h4M15 4h4a1 1 0 0 1 1 1v4M20 15v4a1 1 0 0 1-1 1h-4M9 20H5a1 1 0 0 1-1-1v-4" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+	const ICON_COLLAPSE =
+		'<path d="M9 4v4a1 1 0 0 1-1 1H4M15 4v4a1 1 0 0 0 1 1h4M15 20v-4a1 1 0 0 1 1-1h4M9 20v-4a1 1 0 0 0-1-1H4" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+	// Ikon share (panah sederhana)
+	const ICON_SHARE =
+		'<path d="M8 16 16 8M16 8H9M16 8v7" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>';
+
+	lightbox.on('uiRegister', function () {
+		// Caption di bawah foto (mengikuti data-caption pada tiap <a>)
+		lightbox.pswp.ui.registerElement({
+			name: 'custom-caption',
+			order: 9,
+			isButton: false,
+			appendTo: 'root',
+			onInit: (el) => {
+				el.className = 'pswp__custom-caption';
+				lightbox.pswp.on('change', () => {
+					const currSlideElement = lightbox.pswp.currSlide.data.element;
+					el.textContent = currSlideElement?.getAttribute('data-caption') || '';
+				});
+			},
+		});
+
+		// Tombol Fullscreen (masuk/keluar layar penuh)
+		lightbox.pswp.ui.registerElement({
+			name: 'fullscreen-button',
+			ariaLabel: 'Perbesar Layar Penuh',
+			order: 8,
+			isButton: true,
+			html: {
+				isCustomSVG: true,
+				inner: ICON_EXPAND,
+				outlineID: 'pswp__icn-fullscreen',
+			},
+			onInit: (el) => {
+				const setIcon = () => {
+					const isFs = Boolean(document.fullscreenElement);
+					const svg = el.querySelector('svg');
+					if (svg) svg.innerHTML = isFs ? ICON_COLLAPSE : ICON_EXPAND;
+					el.setAttribute('aria-label', isFs ? 'Keluar Layar Penuh' : 'Perbesar Layar Penuh');
+				};
+				document.addEventListener('fullscreenchange', setIcon);
+			},
+			onClick: () => {
+				const pswpEl = lightbox.pswp.element;
+				if (!document.fullscreenElement) {
+					pswpEl?.requestFullscreen?.().catch(() => {});
+				} else {
+					document.exitFullscreen?.().catch(() => {});
+				}
+			},
+		});
+
+		// Tombol Share (Web Share API native, fallback salin tautan)
+		lightbox.pswp.ui.registerElement({
+			name: 'share-button',
+			ariaLabel: 'Bagikan',
+			order: 15,
+			isButton: true,
+			html: {
+				isCustomSVG: true,
+				inner: ICON_SHARE,
+				outlineID: 'pswp__icn-share',
+			},
+			onClick: async () => {
+				const slide = lightbox.pswp.currSlide;
+				const pageUrl = window.location.href;
+				const caption =
+					slide.data.element?.getAttribute('data-caption') || 'Dokumentasi Penyaluran Yayasan Alfatihah';
+
+				if (navigator.share) {
+					try {
+						await navigator.share({ title: caption, text: caption, url: pageUrl });
+					} catch (err) {
+						// dibatalkan pengguna, abaikan
+					}
+				} else if (navigator.clipboard) {
+					try {
+						await navigator.clipboard.writeText(pageUrl);
+						showToast('Tautan disalin ke clipboard');
+					} catch (err) {
+						showToast('Gagal menyalin tautan');
+					}
+				}
+			},
+		});
+	});
+
+	// Toast kecil untuk notifikasi fallback share
+	function showToast(message) {
+		const toast = document.createElement('div');
+		toast.className = 'pswp__toast';
+		toast.textContent = message;
+		document.body.appendChild(toast);
+		setTimeout(() => toast.classList.add('pswp__toast--visible'), 10);
+		setTimeout(() => {
+			toast.classList.remove('pswp__toast--visible');
+			setTimeout(() => toast.remove(), 300);
+		}, 2200);
+	}
+
+	lightbox.init();
+</script>
+
+<style is:global>
+	.pswp__custom-caption {
+		position: absolute;
+		bottom: 16px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: max-content;
+		max-width: 90%;
+		padding: 6px 16px;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.5);
+		color: #fff;
+		font-size: 14px;
+		font-weight: 600;
+		text-align: center;
+		z-index: 1500;
+	}
+
+	.pswp__toast {
+		position: fixed;
+		bottom: 32px;
+		left: 50%;
+		transform: translate(-50%, 12px);
+		z-index: 3000;
+		padding: 10px 20px;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.85);
+		color: #fff;
+		font-size: 13px;
+		font-weight: 600;
+		opacity: 0;
+		transition: opacity 0.25s ease, transform 0.25s ease;
+		pointer-events: none;
+	}
+
+	.pswp__toast--visible {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+</style>
